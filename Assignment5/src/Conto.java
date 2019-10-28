@@ -2,14 +2,20 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class Conto {
+public class Conto implements Iterable<Movimento> {
     private String nomeCorrentista;
     private ListaMovimenti movimenti;
 
     public Conto(String nomeCorrentista) {
         this.nomeCorrentista = nomeCorrentista;
+        movimenti = new ListaMovimenti();
+    }
+
+    public Conto() {
+        this.nomeCorrentista = "";
         movimenti = new ListaMovimenti();
     }
 
@@ -39,6 +45,8 @@ public class Conto {
         return "{ " + nomeCorrentista + ", " + movimenti + "}";
     }
 
-
+    public Iterator<Movimento> iterator() {
+        return movimenti.iterator();
+    }
 
 }

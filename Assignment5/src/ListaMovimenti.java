@@ -2,9 +2,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class ListaMovimenti {
+public class ListaMovimenti implements Iterable<Movimento> {
     private List<Movimento> movimenti;
 
     public ListaMovimenti() {
@@ -42,6 +43,9 @@ public class ListaMovimenti {
         s += " ]";
 
         return s;
+    }
 
+    public Iterator<Movimento> iterator() {
+        return movimenti.iterator();
     }
 }

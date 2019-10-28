@@ -29,4 +29,8 @@ public class Movimento {
     public String toString() {
         return "{" + data + ", " + causale + "}";
     }
+
+    public int getCodiceCausale() {
+        return causale.codice;
+    }
 }

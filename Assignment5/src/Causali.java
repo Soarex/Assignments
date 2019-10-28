@@ -50,4 +50,28 @@ public enum Causali {
 
         return DEFAULT;
     }
+
+    public static String getName(int codice) {
+        switch(codice) {
+            case -1:
+                return "Default";
+
+            case 0:
+                return "Bonfico";
+
+            case 1:
+                return "Accredito";
+
+            case 2:
+                return "Bollettino";
+
+            case 3:
+                return "F24";
+
+            case 4:
+                return "Pagobancomat";
+        }
+
+        return "Errore";
+    }
 }
