@@ -22,7 +22,7 @@ public class Lettore extends Thread {
     private int graffeAperte;
 
     public Lettore(String filePath) {
-        filePath = filePath;
+        this.filePath = filePath;
         threadPool = new ThreadPoolExecutor(4, 20, 100L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
         contoTemporaneo = "";
     }
@@ -30,7 +30,7 @@ public class Lettore extends Thread {
     public void run() {
         try {
             JSONParser parser = new JSONParser();
-            FileChannel file = new FileInputStream("conti.json").getChannel();
+            FileChannel file = new FileInputStream(filePath).getChannel();
             ByteBuffer buffer = ByteBuffer.allocate(512);
 
             String[] contiElaborati = new String[10];
@@ -63,6 +63,8 @@ public class Lettore extends Thread {
         }
     }
 
+    //Analizza i byte ricevuti nel buffer e ricostruisce i conti
+    //Restituisce il numero di conti trovati nel buffer e salva i conti in res
     public int elaboraDati(CharBuffer buffer, String[] res) {
         int indiceInizioConto = 0;
         int contiElaborati = 0;
